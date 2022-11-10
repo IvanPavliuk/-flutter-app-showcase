@@ -23,38 +23,35 @@ class _LoginPageState extends State<LoginPage>
     with PresenterStateMixin<LoginViewModel, LoginPresenter, LoginPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: stateObserver(
-          builder: (context, state) => Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: appLocalizations.usernameHint,
-                  ),
-                  onChanged: presenter.usernameChanged,
+        body: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  hintText: appLocalizations.usernameHint,
                 ),
-                const SizedBox(height: 8),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: appLocalizations.passwordHint,
-                  ),
-                  onChanged: presenter.passwordChanged,
+                onChanged: presenter.usernameChanged,
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: appLocalizations.passwordHint,
                 ),
-                const SizedBox(height: 16),
-                if (state.isLoading)
-                  const CircularProgressIndicator()
-                else
-                  stateObserver(
-                    builder: (context, state) => ElevatedButton(
-                      onPressed: presenter.logIn,
-                      child: Text(appLocalizations.logInAction),
-                    ),
-                  ),
-              ],
-            ),
+                onChanged: presenter.passwordChanged,
+              ),
+              const SizedBox(height: 16),
+              stateObserver(
+                builder: (context, state) => state.isLoading
+                    ? const CircularProgressIndicator()
+                    : ElevatedButton(
+                        onPressed: presenter.logIn,
+                        child: Text(appLocalizations.logInAction),
+                      ),
+              ),
+            ],
           ),
         ),
       );

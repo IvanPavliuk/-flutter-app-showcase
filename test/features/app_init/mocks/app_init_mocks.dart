@@ -16,6 +16,7 @@ class AppInitMocks {
   // USE CASES
   static late MockAppInitFailure appInitFailure;
   static late MockAppInitUseCase appInitUseCase;
+  static late MockLogInUseCase logInUseCase;
 
   //DO-NOT-REMOVE USE_CASE_MOCKS_STATIC_FIELD
 
@@ -43,6 +44,7 @@ class AppInitMocks {
     // USE CASES
     appInitFailure = MockAppInitFailure();
     appInitUseCase = MockAppInitUseCase();
+    logInUseCase = MockLogInUseCase();
     //DO-NOT-REMOVE USE_CASE_INIT_MOCKS
 
     // REPOSITORIES
